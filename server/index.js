@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import mongoose from 'mongoose'
 
+import credentials from './Credentials.js'
 import postRoutes from './routes/posts.js'
 
 const app = express()
@@ -13,7 +14,9 @@ app.use(bodyParser.json({ limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
 
-const CONNECTION_URL = "mongodb+srv://maqibnaeem2019:Mnaeem12345@memories.r4cdo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const user = credentials.mongodbUser
+const userPassword = credentials.mongodbUserPassword
+const CONNECTION_URL = `mongodb+srv://${user}:${userPassword}@memories.r4cdo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 const PORT = process.env.Port || 5000
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true})

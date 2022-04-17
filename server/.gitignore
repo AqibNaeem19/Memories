@@ -1,1 +1,5 @@
+# Ignoring node modules and its sub-folders
 /node_modules
+
+# Ignoring Credentials file
+/Credentials.js
